@@ -7,26 +7,24 @@ const mongo_uri = "mongodb+srv://root:root@cluster0.kv97h.mongodb.net/THAI-JOKE?
 mongoose.Promise = global.Promise;
 mongoose.connect(mongo_uri, { useNewUrlParser: true }).then(
   () => {
-    console.log("[success] task 2 : connected to the database ");
+    console.log("connected to the database ");
   },
   error => {
-    console.log("[failed] task 2 " + error);
+    console.log("failed connect to database" + error);
     process.exit();
   }
 );
 
 const app = express();
-
 app.use(cors());
 
-// คำสั่งสำหรับแปลงค่า JSON ให้สามารถดึงและส่งค่าไปยัง MongoDB Atlas ได้
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-  console.log("[success] task 1 : listening on port " + port);
+  console.log("Server is running on port" + port);
 });
 
 app.get("/", (req, res) => {
