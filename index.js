@@ -31,8 +31,9 @@ app.get("/", (req, res) => {
   res.status(200).send("หน้าแรกของ api express");
 });
 
-const router = require("./router");
-app.use("/jokes", router);
+const jokeRouter = require("./router/jokeRouter");
+
+app.use("/jokes", jokeRouter);
 
 app.use((req, res, next) => {
   const err = new Error("ไม่พบ path ที่คุณต้องการ");
